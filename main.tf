@@ -28,16 +28,10 @@ resource "azurerm_linux_web_app" "linguista" {
       dotnet_version = "8.0"
     }
     app_command_line = "dotnet linguista-api.dll"
+    health_check_path = "/healthz"
   }
 
   app_settings = {
     "SOME_KEY" = "some-value"
   }
-
-  
-#   connection_string {
-#     name  = "DefaultConnection"
-#     type  = "SQLAzure"
-#     value = "Database=mydb;Data Source=mydbserver;User Id=mylogin;Password=mypassword;"
-#   }
 }
