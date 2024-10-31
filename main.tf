@@ -25,10 +25,10 @@ resource "azurerm_linux_web_app" "linguista" {
 
   site_config {
     application_stack {
-      dotnet_version = "8.0"
+      dotnet_version = var.dotnet8
     }
     app_command_line = "dotnet linguista-api.dll"
-    health_check_path = "/healthz"
+    health_check_path = var.healthcheckEndpoint
   }
 
   app_settings = {
