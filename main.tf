@@ -31,7 +31,8 @@ resource "azurerm_linux_web_app" "linguista" {
     health_check_path = var.healthcheckEndpoint
   }
 
-  app_settings = {
-    "SOME_KEY" = "some-value"
+  # App settings (e.g. OpenAiKey) are managed in Azure, not Terraform
+  lifecycle {
+    ignore_changes = [app_settings]
   }
 }
